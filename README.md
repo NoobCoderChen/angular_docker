@@ -40,17 +40,17 @@
 F:/angular/angular/demo 是本地angular项目的根目录  
 :/app 在docker中的工作目录
 
-![angular_start_in_docker](https://github.com/NoobCoderChen/angular_docker/blob/master/error_img/angular_start_in_docker.jpg)  
+![angular_start_in_docker](https://github.com/NoobCoderChen/angular_docker/blob/master/img/angular_start_in_docker.jpg)  
 此时已成功运行chenzijian0326/angular_docker:v1.0镜像  
 
 ### 运行angular应用
 `ng serve --host=0.0.0.0`  
 
-![ng_serve](https://github.com/NoobCoderChen/angular_docker/blob/master/error_img/ng_serve.jpg) 
+![ng_serve](https://github.com/NoobCoderChen/angular_docker/blob/master/img/ng_serve.jpg) 
 
 ### 编译报错  
 #### rxjs_error_TS1005  
-![rxjs_error_TS1005](https://github.com/NoobCoderChen/angular_docker/blob/master/error_img/rxjs_error_TS1005.jpg)  
+![rxjs_error_TS1005](https://github.com/NoobCoderChen/angular_docker/blob/master/img/rxjs_error_TS1005.jpg)  
 Reason:  
 rxjs版本问题  
 
