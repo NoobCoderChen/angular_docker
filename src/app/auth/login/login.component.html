@@ -1,0 +1,54 @@
+<h1>创建自己的英雄</h1>
+<h3 *ngIf="articleIdToUpdate; else create"> 
+   Update Article for Id: {{articleIdToUpdate}}
+</h3>
+<ng-template #create>
+   <h3>开始创建!</h3>
+</ng-template>
+<div>
+ <form [formGroup]="articleForm" (ngSubmit)="onArticleFormSubmit()">
+  <table>
+    <tr><td>英雄名</td><td><input formControlName="title">
+	       <label *ngIf="articleForm.get('title').invalid && processValidation" [ngClass] = "'error'"> 必须输入英雄名. </label>
+   	</td></tr>
+    <tr><td>介绍</td><td><input formControlName="category">
+	       <label *ngIf="articleForm.get('category').invalid && processValidation" [ngClass] = "'error'"> 必须输入英雄介绍. </label>
+	</td></tr>	
+    <tr><td colspan="2">
+	    <button *ngIf="!articleIdToUpdate">创建</button>  
+		<button *ngIf="articleIdToUpdate">更改</button>  
+	    <button (click)="backToCreateArticle()" *ngIf="articleIdToUpdate">返回</button>  
+	</td></tr>
+  </table>
+ </form> 
+ <br/>
+ <div *ngIf="statusCode; else processing">
+   <div *ngIf="statusCode === 201" [ngClass] = "'success'">
+	    英雄添加成功.
+   </div>   
+   <div *ngIf="statusCode === 409" [ngClass] = "'success'">
+        英雄已存在.
+   </div>   	
+   <div *ngIf="statusCode === 200" [ngClass] = "'success'">
+        英雄更改成功.
+   </div>   	      
+   <div *ngIf="statusCode === 204" [ngClass] = "'success'">
+        英雄已成功删除
+   </div>   	   
+   <div *ngIf="statusCode === 500" [ngClass] = "'error'">
+        服务器错误.
+   </div>	
+ </div>
+ <ng-template #processing>
+	<img *ngIf="requestProcessing" src="assets/images/loading.gif">
+ </ng-template>
+</div>
+<h3>英雄列表</h3>
+<table>
+  <tr><th> Id</th> <th>英雄名</th><th>介绍</th><th></th><th></th></tr>
+  <tr *ngFor="let article of allArticles" >
+    <td>{{article.id}}</td> <td>{{article.title}}</td> <td>{{article.category}}</td>
+	<td><button type="button" (click)="loadArticleToEdit(article.id)">编辑</button> </td> 
+	<td><button type="button" (click)="deleteArticle(article.id)">删除</button></td>
+  </tr>
+</table>

@@ -1,0 +1,16 @@
+<h1 class="title">Marvel Heroes</h1>
+<nav>
+  <a routerLink="/superheroes" routerLinkActive="active">英雄</a>
+  <a routerLink="/Latest-news" routerLinkActive="active">最新动态</a>
+  <a routerLink="/article" routerLinkActive="active">创建英雄</a>
+</nav>
+
+<div class="detail-pad" [@routeAnimation]="getAnimationData(routerOutlet)">
+  <router-outlet #routerOutlet="outlet"></router-outlet>
+</div>
+
+<!-- 
+Copyright Google LLC. All Rights Reserved.
+Use of this source code is governed by an MIT-style license that
+can be found in the LICENSE file at http://angular.io/license
+-->
